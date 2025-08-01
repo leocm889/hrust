@@ -2,8 +2,10 @@ use std::io;
 mod department;
 mod employee;
 use crate::department::Department;
-use crate::employee::add_employee;
-use crate::employee::Employee;
+use crate::employee::{
+    add_employee, retrieve_all_employee_from_compnany, retrieve_all_employees_by_department,
+    Employee,
+};
 use std::collections::HashMap;
 
 fn main() {
@@ -21,6 +23,7 @@ fn main() {
         println!("1. Add employee");
         println!("2. Retrieve employees by department");
         println!("3. Retrieve all employees");
+        println!("4. Exit");
 
         println!("Enter choice: ");
 
@@ -39,9 +42,13 @@ fn main() {
         };
 
         match choice {
-            1 => {}
-            2 => {}
-            3 => {}
+            1 => add_employee(&mut company),
+            2 => retrieve_all_employees_by_department(&mut company),
+            3 => retrieve_all_employee_from_compnany(&mut company),
+            4 => {
+                println!("Goodbye! 👋");
+                break;
+            }
             _ => {
                 println!("Invalid choice, try again.");
                 continue;
